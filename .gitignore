@@ -27,7 +27,6 @@ yarn-error.log*
 next-env.d.ts
 
 # root level files
-favicon.png
 test.ts
 
 # package manager lock files
