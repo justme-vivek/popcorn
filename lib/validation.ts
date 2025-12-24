@@ -9,7 +9,7 @@ export const roomSchema = z.object({
 });
 
 export const messageSchema = z.object({
-  content: z.string().max(1000, "Message too long"),
+  content: z.string().max(2000000, "Content too large"), // Allow up to ~2MB for base64 data URLs (1MB file + base64 overhead)
   userName: z.string().min(1, "Name required").max(50, "Name too long"),
   type: z.enum(["text", "image", "pdf", "file"]),
   fileName: z.string().optional(),

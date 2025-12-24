@@ -76,20 +76,7 @@ export async function POST(
     const body = await request.json();
     const validatedData = messageSchema.parse(body);
 
-    // Add file validation for non-text messages
-    if (validatedData.type !== "text") {
-      const allowedTypes = ["image/jpeg", "image/png", "application/pdf"];
-      const maxSize = 5 * 1024 * 1024; // 5MB
-
-      // Assuming file data is in body (adjust based on your upload logic)
-      const file = body.file; // This might need adjustment for actual file handling
-      if (file && (!allowedTypes.includes(file.type) || file.size > maxSize)) {
-        return NextResponse.json(
-          { error: "Invalid file type or size" },
-          { status: 400 }
-        );
-      }
-    }
+    // File validation is now handled in the upload route
 
     const {
       content,
